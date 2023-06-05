@@ -6,7 +6,6 @@ import model.Fridge;
 import model.MobilePhone;
 import model.Pc;
 
-
 import java.util.Scanner;
 
 import static login.Login.login;
@@ -69,6 +68,7 @@ public class Client {
                     break;
                 case 8:
                     admin.payToBill();
+                    System.out.println(" tổng hóa đn thánh toán là:   ");
                     break;
                 case 9:
                     login();
@@ -126,47 +126,47 @@ public class Client {
         inPut = admin.checkInt(checkInput);
         switch (inPut) {
             case 1: {
-                System.out.println("Nhập id điện thoại: ");
+                System.out.println("Nhập id điện thoại:     ");
                 String id = admin.getID(checkInput);
-                System.out.println("Nhập tên điện thoại: ");
+                System.out.println("Nhập tên điện thoại:     ");
                 String name = checkInput.nextLine();
-                System.out.println("Nhập giá tiền điện thoại: ");
+                System.out.println("Nhập giá tiền điện thoại:     ");
                 double cost = admin.checkDouble(checkInput);
-                System.out.println("Nhập màu sắc điện thoại: ");
+                System.out.println("Nhập màu sắc điện thoại:     ");
                 String color = checkInput.nextLine();
-                System.out.println("Nhập số lượng điện thoại: ");
+                System.out.println("Nhập số lượng điện thoại:     ");
                 int quantity = admin.checkInt(checkInput);
-                System.out.println("Nhập hãng điện thoại: ");
+                System.out.println("Nhập hãng điện thoại:     ");
                 String typeOfScreen = checkInput.nextLine();
                 return new MobilePhone(id, name, cost, color, quantity, typeOfScreen);
             }
             case 2: {
-                System.out.println("Nhập id máy tính: ");
+                System.out.println("Nhập id máy tính:     ");
                 String id = admin.getID(checkInput);
-                System.out.println("Nhập tên máy tính: ");
+                System.out.println("Nhập tên máy tính:     ");
                 String name = checkInput.nextLine();
-                System.out.println("Nhập giá tiền máy tính: ");
+                System.out.println("Nhập giá tiền máy tính:     ");
                 double cost = admin.checkDouble(checkInput);
-                System.out.println("nhập màu sắc máy tính: ");
+                System.out.println("nhập màu sắc máy tính:     ");
                 String color = checkInput.nextLine();
-                System.out.println("Nhập số lượng máy tính: ");
+                System.out.println("Nhập số lượng máy tính:     ");
                 int quantity = admin.checkInt(checkInput);
-                System.out.println("Nhập loại card: ");
+                System.out.println("Nhập loại card:     ");
                 String card = checkInput.nextLine();
                 return new Pc(id, name, cost, color, quantity, card);
             }
             case 3: {
-                System.out.println("Nhập id tủ lạnh:");
+                System.out.println("Nhập id tủ lạnh:     ");
                 String id = admin.getID(checkInput);
-                System.out.println("Nhập tên tủ lạnh: ");
+                System.out.println("Nhập tên tủ lạnh:     ");
                 String name = checkInput.nextLine();
-                System.out.println("Nhập giá tiền: ");
+                System.out.println("Nhập giá tiền:     ");
                 double cost = admin.checkDouble(checkInput);
-                System.out.println("Nhập màu sắc: ");
+                System.out.println("Nhập màu sắc:     ");
                 String color = checkInput.nextLine();
-                System.out.println("Nhập số lượng tủ lạnh: ");
+                System.out.println("Nhập số lượng tủ lạnh:     ");
                 int quantity = admin.checkInt(checkInput);
-                System.out.println("Nhập loại tủ lạnh: ");
+                System.out.println("Nhập loại tủ lạnh:     ");
                 String cooling = checkInput.nextLine();
                 return new Fridge(id, name, cost, color, quantity, cooling);
             }

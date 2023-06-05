@@ -115,8 +115,8 @@ public class ElectronicManager {
     }
 
     public void payToBill ( ) {
-        System.out.println("Tổng cái giá phải trả: " + priceElectronicDevice());
-        deleteElectronicDevice();
+        System.out.println("Tổng số tiền phải trả là:    " + priceElectronicDevice());
+//        deleteElectronicDevice();
     }
 
     public void searchElement (Scanner scanner) {
@@ -192,16 +192,16 @@ public class ElectronicManager {
                     System.out.println("""
                             ||=======================================================================||
                             ||       Đã thay thế sản phẩm cần sửa. Bạn có muốn nhập lại không?       ||
-                            ||       10. Có, mời bạn nhập lại:                                       ||
-                            ||       11. Thoát ra menu.                                              ||
+                            ||       1. Có, mời bạn nhập lại:                                        ||
+                            ||       2. Thoát ra menu.                                               ||
                             ||=======================================================================||
                             """);
                     int inPut = checkInt(scanner);
                     switch (inPut) {
-                        case 10:
+                        case 1:
                             editElement(scanner);
                             break;
-                        case 11:
+                        case 2:
                             Client.menuManage();
                             break;
                         default:

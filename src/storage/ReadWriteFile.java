@@ -18,7 +18,7 @@ public class ReadWriteFile implements IReadWriteFile {
         return instance;
     }
     public void writeToFile(List<ElectronicDevice> electronicDevices) {
-        File file = new File("case_module_2.txt");
+        File file = new File("case_md2.txt");
         OutputStream outputStream = null;
         try {
             outputStream = new FileOutputStream(file);
@@ -50,7 +50,7 @@ public class ReadWriteFile implements IReadWriteFile {
     public List<ElectronicDevice> readToFile() {
         InputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("case_module_2.txt");
+            inputStream = new FileInputStream("case_md2.txt");
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
