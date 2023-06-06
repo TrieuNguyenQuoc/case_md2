@@ -1,18 +1,23 @@
 package login;
+
+import java.util.Scanner;
+
 import static views.Client.*;
+
 public class Login {
     private static final Email email1 = new Email();
     private static final Password password = new Password();
-    public static final String[] validEmail = new String[]{"sep@gmail.com", "nhanvien@gmail.com"};
-    public static final String[] validPassword = new String[]{"*****", "trieu.com"};
+    public static final String[] validEmail = new String[]{"1", "nhanvien@gmail.com"};
+    public static final String[] validPassword = new String[]{"1", "trieu.com"};
 
-    public static void login() {
-        while (inPut != 0) {
+    public static void login ( ) {
+        while (true) {
             System.out.println("-----Đăng nhập-----");
             System.out.println("Nhập tên tài khoản: ");
             String tk = checkInput.nextLine();
             System.out.println("Nhập mật khẩu: ");
             String password1 = checkInput.nextLine();
+
             for (String s : validEmail) {
                 boolean isValid = email1.validate(s);
                 for (String i :
@@ -27,6 +32,7 @@ public class Login {
                     }
                 }
             }
+
             for (String s : validEmail) {
                 for (String value : validPassword) {
                     if (!s.equals(tk) || !value.equals(password1)) {
@@ -38,21 +44,22 @@ public class Login {
             }
         }
     }
-    public static void loginReal() {
-        while (inPut != 0) {
+
+    public static void loginReal ( ) {
+        while (true) {
             System.out.println("""
-            ||=========================================================||
-            ||       Bạn đã nhập sai tên tài khoản hoặc mật khẩu!      ||
-            ||         Mời bạn nhập lại mật khẩu đã quên!              ||
-            ||       Bạn có muốn nhập lại không?                       ||
-            ||       0. Thoát                                          ||
-            ||       1. Nhập lại:                                      ||
-            ||=========================================================||
-            """);
-            inPut = admin.checkInt(checkInput);
-            switch (inPut) {
+                    ||=========================================================||
+                    ||       Bạn đã nhập sai tên tài khoản hoặc mật khẩu!      ||
+                    ||         Mời bạn nhập lại mật khẩu đã quên!              ||
+                    ||       Bạn có muốn nhập lại không?                       ||
+                    ||       0. Thoát                                          ||
+                    ||       1. Nhập lại:                                      ||
+                    ||=========================================================||
+                    """);
+            int choice = Integer.parseInt(checkInput.nextLine());
+            switch (choice) {
                 case 0:
-                    System.exit(inPut);
+                    break;
                 case 1:
                     login();
                     break;
@@ -62,4 +69,6 @@ public class Login {
             }
         }
     }
+
+
 }

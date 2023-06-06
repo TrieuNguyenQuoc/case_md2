@@ -28,49 +28,58 @@ public class ElectronicManager {
 
     public void display ( ) {
         System.out.println(electronicDevices);
+//        System.out.printf("%-15s%-15s%-15s%-15s%-15s%s","Id", "Name", "Cost","Color","Quantity","Screentype");
+//        for (ElectronicDevice electronicDevice: electronicDevices ) {
+//            if(electronicDevice instanceof ElectronicDevice){
+//                System.out.println();
+//                System.out.printf("%-15s%-15s%-15s%-15s%-15s%s",electronicDevice.getId(),electronicDevice.getName(),electronicDevice.getCost(),
+//                        electronicDevice.getColor(),electronicDevice.getQuantity());
+//                System.out.println();
+//            }
+//        }
     } //In ra màn hình
 
 
     public double totalPriceMobilePhone ( ) {//Tổng tiền điện thoại
         double priceMobilePhone = 0;
-        double totalPriceMobilePhoneSale = 0;
+        double  totalPriceMobilePhone = 0;
         for (ElectronicDevice electronicDevice :
                 electronicDevices) {
             if (electronicDevice instanceof MobilePhone) {
                 priceMobilePhone += electronicDevice.getRealMoney();
-                totalPriceMobilePhoneSale += (electronicDevice.getAmount() - priceMobilePhone);
+                totalPriceMobilePhone += (electronicDevice.getAmount() - priceMobilePhone);
             }
         }
-        return totalPriceMobilePhoneSale;
+        return totalPriceMobilePhone;
     }
 
 
     public double totalPricePc ( ) { //Tổng tiền máy tính
-        double pricePc = 0;
-        double totalPricePcSale = 0;
+        double  pricePc = 0;
+        double totalPricePc = 0;
         for (ElectronicDevice electronicDevice :
                 electronicDevices) {
             if (electronicDevice instanceof Pc) {
                 pricePc += electronicDevice.getRealMoney();
-                totalPricePcSale += (electronicDevice.getAmount() - pricePc);
+                totalPricePc += (electronicDevice.getAmount() - pricePc);
             }
         }
-        return totalPricePcSale;
+        return totalPricePc;
     }
 
     public double totalPriceFridge ( ) {    //Tổng tiền tủ lạnh
-        double totalPriceFridgeSale = 0;
+        double totalPriceFridge = 0;
         for (ElectronicDevice electronicDevice :
                 electronicDevices) {
             if (electronicDevice instanceof Fridge) {
-                totalPriceFridgeSale += (electronicDevice.getAmount() - electronicDevice.getRealMoney());
+                totalPriceFridge += (electronicDevice.getAmount() - electronicDevice.getRealMoney());
             }
         }
-        return totalPriceFridgeSale;
+        return totalPriceFridge;
     }
 
-    public double totalElectronicDeviceBeforeSale ( ) {
-        double totalElectroniceDevice = 0;
+    public double totalElectronicDeviceBefore ( ) {
+        double  totalElectroniceDevice = 0;
         for (ElectronicDevice e :
                 electronicDevices) {
             totalElectroniceDevice += e.getAmount();
@@ -79,18 +88,32 @@ public class ElectronicManager {
     }
 
 
-    public double priceElectronicDevice ( ) {
+    public double  priceElectronicDevice ( ) {
         double priceElectronicDevice = 0;
-        priceElectronicDevice += totalPriceFridge() + totalPricePc() + totalPriceMobilePhone();//Tổng tiền các sản phẩm sau khuyến mãi
+        priceElectronicDevice += totalPriceFridge() + totalPricePc() + totalPriceMobilePhone();//Tổng tiền của các sản phẩm
         return priceElectronicDevice;
     }
-
 
     public void addElement (ElectronicDevice electronicDevice) {  // Thêm phần tử
         electronicDevices.add(electronicDevice);
         readWriteFile.writeToFile(electronicDevices);
-    }
 
+    }
+    public void buyElectronicDevice() {// Mua hàng
+        boolean found = false;
+        int totalCost = 0;
+        for (ElectronicDevice electronicDevice : electronicDevices) {
+                found = true;
+                totalCost = (int) (electronicDevice.getCost() * electronicDevice.getQuantity());
+                System.out.println("Bạn đã mua " + electronicDevice + " cái " + electronicDevice +
+                        " với tổng chi phí là " + totalCost + " đồng.");
+                break;
+
+        }
+        if (!found) {
+            System.out.println("Xin lỗi, chúng tôi không có sản phẩm này để bán.");
+        }
+    }
 
     public void deleteElement (Scanner scanner) {
         System.out.println("Nhập sản phẩm cần xóa theo id: ");// Xóa theo id
@@ -116,7 +139,6 @@ public class ElectronicManager {
 
     public void payToBill ( ) {
         System.out.println("Tổng số tiền phải trả là:    " + priceElectronicDevice());
-//        deleteElectronicDevice();
     }
 
     public void searchElement (Scanner scanner) {
@@ -166,7 +188,7 @@ public class ElectronicManager {
                 e.setColor(newColor);
                 e.setQuantity(newQuantity);
                 if (e instanceof Fridge) {
-                    System.out.println("Mời bạn nhập kiểu tủ lạnh: ");
+                    System.out.println("Mời bạn nhập loại tủ lạnh: ");
                     newCooling = scanner.nextLine();
                     ((Fridge) e).setCooling(newCooling);
                     break;
